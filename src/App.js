@@ -1,4 +1,5 @@
 import MapNavbar from './components/MapNavbar/MapNavbar'; 
+import React from 'react';
 import Map from './components/Map/Map';
 import { useState } from 'react';
 
@@ -14,12 +15,12 @@ function App() {
 
   return (
     <div className="App">
+      <p>styleName = {style}</p>
     <MapNavbar 
     onStyleChange={setStyle}
     />
     <Map
     state={{lng, lat, zoom, API_KEY, style,}}
-    
     />
     </div>
   );
