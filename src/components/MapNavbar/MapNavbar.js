@@ -1,6 +1,3 @@
-import React from 'react';
-import './MapNavbar.css';
-
 export default function MapNavbar({
   onStyleChange
   }
@@ -9,7 +6,10 @@ export default function MapNavbar({
     <div className="heading">
     <h1>This is my map App</h1>
     <button type="button" onClick={(e) => onStyleChange('osm-carto')}> 
-    click Me
+    color
+    </button>
+    <button type="button" onClick={(e) => onStyleChange('toner-grey')}> 
+    Black And White
     </button>
     </div>
   );

@@ -1,8 +1,8 @@
 import MapNavbar from './components/MapNavbar/MapNavbar'; 
+import AdressAuto from './components/AdressAuto/AdressAuto';
 import React from 'react';
-import Map from './components/Map/Map';
 import { useState } from 'react';
-
+import Map from './components/Map/Map';
 import './App.css';
 
 function App() {
@@ -15,15 +15,17 @@ function App() {
 
   return (
     <div className="App">
+      <AdressAuto />
       <p>styleName = {style}</p>
     <MapNavbar 
     onStyleChange={setStyle}
     />
-    <Map
-    state={{lng, lat, zoom, API_KEY, style,}}
-    />
+    <Map key={`${style} ${lng} ${lat}`} state={{lng, lat, zoom, API_KEY, style}}/>
+    
     </div>
   );
 }
 
 export default App;
+
+/* <Map state={{lng, lat, zoom, API_KEY, style}}/> */
