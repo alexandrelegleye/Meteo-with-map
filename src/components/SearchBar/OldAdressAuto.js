@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 const GEOAPIFY_API_KEY = "74e4eaf562dc4ca59197628b419c2e9c";
 
-export default function AdressAuto() {
+export default function OldAdressAuto() {
   const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState([]);
   const [features, setFeatures] = useState([""]);
@@ -12,8 +12,9 @@ export default function AdressAuto() {
       console.log(inputValue);
       const timer = setTimeout(() => {
         fetch(
-          `https://api.geoapify.com/v1/geocode/autocomplete?lang=fr&text=${inputValue}&apiKey=${GEOAPIFY_API_KEY}`
-        )
+          //`https://api.geoapify.com/v1/geocode/autocomplete?lang=fr&text=${inputValue}&apiKey=${GEOAPIFY_API_KEY}`
+        
+          )
           .then((response) => response.json())
           .then((data) => {
             setFeatures(data.features);

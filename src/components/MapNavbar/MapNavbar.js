@@ -1,10 +1,14 @@
 export default function MapNavbar({
-  onStyleChange
+  onStyleChange,
+  adressSelected
   }
 ){
   return (
     <div className="heading">
-    <h1>This is my map App</h1>
+      {adressSelected &&
+      <h1>{adressSelected}</h1>
+      }
+    
     <button type="button" onClick={(e) => onStyleChange('osm-carto')}> 
     color
     </button>

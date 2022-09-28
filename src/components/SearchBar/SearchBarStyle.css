@@ -1,0 +1,22 @@
+
+.geoapify-autocomplete-input{  /*The input element*/
+
+}	
+.geoapify-autocomplete-items{	/*The dropdown list*/
+    color:rgb(218, 98, 0);
+}
+.geoapify-autocomplete-items .active{	/*Selected item in the dropdown list*/
+
+}
+.geoapify-autocomplete-item{	/*The dropdown list item*/
+
+}
+.geoapify-autocomplete-item.icon{	/*The dropdown list item icon*/
+
+}
+.geoapify-autocomplete-item.text{	/*The dropdown list item text*/
+
+}
+.geoapify-close-button{	/*The clear button*/
+    
+}
