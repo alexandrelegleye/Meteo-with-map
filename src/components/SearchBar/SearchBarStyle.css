@@ -1,6 +1,8 @@
 
 .geoapify-autocomplete-input{  /*The input element*/
-
+    border-radius: 1em;
+    font-size: 1.3rem;
+    padding: 1em;
 }	
 .geoapify-autocomplete-items{	/*The dropdown list*/
     color:rgb(218, 98, 0);
@@ -18,5 +20,12 @@
 
 }
 .geoapify-close-button{	/*The clear button*/
+    color:rgb(218, 98, 0);
     
 }
+
+.geocoder-container{
+    padding: 1em;
+
+    }
+    
