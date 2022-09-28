@@ -1,0 +1,11 @@
+.wind-arrow {
+    height: 20px;
+    width: 20px;
+    margin: auto;
+    align-content: center;
+}
+
+.weather-hour
+{
+    padding: 0 1rem;
+}

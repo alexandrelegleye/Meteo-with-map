@@ -5,7 +5,7 @@ import { useState } from 'react';
 import MapNavbar from '../MapNavbar/MapNavbar'; 
 import Map from '../Map/Map';
 import SearchBar from '../SearchBar/SearchBar';
-import Wheater from '../Wheater/Wheater';
+import Weather from '../Weather/Weather';
 
 //Style
 import './App.css';
@@ -39,7 +39,7 @@ function App() {
     onStyleChange={setStyle}
     />
     <Map key={`${style} ${lng} ${lat}`} state={{lng, lat, zoom, API_KEY, style}}/>
-    <Wheater  coordinates={{lng, lat}}/>
+    <Weather  coordinates={{lng, lat}}/>
     </div>
   );
 }
