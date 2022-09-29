@@ -23,8 +23,9 @@ export default function HourlyWeather({
                   <th>
                     Légende
                   </th>
-                {hourlyWeatherData.time.map((day) => (
-                  <th key={day}>{day}</th>
+                {hourlyWeatherData.time.map((day, index) => (
+                  index<24&&(
+                  <th key={day}>{day}</th>)
                 ))}
                 </tr>
               </thead>
@@ -33,40 +34,45 @@ export default function HourlyWeather({
                   <tr>
                     <th>Température Min</th>
                   {hourlyWeatherData.temperature_2m.map((day, index) => (
+                    index<24&&(
                   <th key={`${day} ${index}`}>{day}°C</th>
-                ))}
+                )))}
                   </tr>
 
                   <tr>
                     <th>Cloudcover</th>
                   {hourlyWeatherData.cloudcover.map((day, index) => (
+                    index<24&&(
                   <th key={`${day} ${index}`}>{day}%</th>
-                ))}
+                )))}
                   </tr>
 
                   <tr>
                     <th>Precipitaton</th>
-                  {hourlyWeatherData.precipitation.map((day) => (
+                  {hourlyWeatherData.precipitation.map((day, index) => (
+                    index<24&&(
                   <th key={day}>{day}mm</th>
-                ))}
+                )))}
                   </tr>
 
                   <tr>
                     <th>Wind Speed</th>
-                  {hourlyWeatherData.windspeed_10m.map((day) => (
+                  {hourlyWeatherData.windspeed_10m.map((day,index ) => (
+                    index<24&&(
                   <th key={day}>{day}</th>
-                ))}
+                )))}
                   </tr>
 
                   <tr>
                     <th>Wind direction</th>
-                  {hourlyWeatherData.winddirection_10m.map((day) => (
+                  {hourlyWeatherData.winddirection_10m.map((day,index) => (
+                    index<24&&(
                   <th key={day}>
                     <img className="wind-arrow" style={{rotate:`${day+180}deg`}}
                 src={arrowWind}
                 alt="Arrow Wind" />
                     </th>
-                ))}
+                )))}
                   </tr>
 
 

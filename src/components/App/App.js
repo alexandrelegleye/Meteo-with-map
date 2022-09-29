@@ -17,7 +17,8 @@ function App() {
   const [adress, setAdress] = useState('');
   const [zoom] = useState(14);
   const [API_KEY] = useState('74e4eaf562dc4ca59197628b419c2e9c');
-  const [style, setStyle]= useState('osm-carto')
+  const [style, setStyle]= useState('osm-carto');
+  const [firstInput, setFirstInput] = useState(false)
 
  function  handleAdress(AdressChoosed) {
   const {lat, lon, formatted} = AdressChoosed.properties
@@ -25,6 +26,7 @@ function App() {
   setLat(lat);
   setLng(lon);
   setAdress(formatted)
+  setFirstInput(true)
  }
 
 
@@ -33,13 +35,19 @@ function App() {
       <SearchBar
       API_KEY={API_KEY}
       OnAdressInput={handleAdress}
+      PrimaryInput={firstInput}
       />
-    <MapNavbar 
+      {firstInput && (  // if no input map and weather are not render
+       <> 
+      <MapNavbar 
     adressSelected={adress}
     onStyleChange={setStyle}
     />
     <Map key={`${style} ${lng} ${lat}`} state={{lng, lat, zoom, API_KEY, style}}/>
     <Weather  coordinates={{lng, lat}}/>
+    </>
+    )}
+   
     </div>
   );
 }

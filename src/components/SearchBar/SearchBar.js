@@ -6,6 +6,7 @@ import './SearchBarStyle.css';
 const SearchBar = ({
   OnAdressInput,
   API_KEY,
+  PrimaryInput
   }) => {
 
     //const value = '';
