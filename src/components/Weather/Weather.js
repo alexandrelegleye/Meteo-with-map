@@ -1,21 +1,19 @@
-import React, { useRef, useEffect, useState } from 'react';
-import CurrentWeather from '../CurrentWeather/CurrentWeather';
-import DailyWeather from '../DailyWeather/DailyWeather';
-import HourlyWeather from '../HourlyWeather/HourlyWeather';
-import './WeatherStyle.css';
+import React, { useEffect, useState } from "react";
+import CurrentWeather from "../CurrentWeather/CurrentWeather";
+import DailyWeather from "../DailyWeather/DailyWeather";
+import HourlyWeather from "../HourlyWeather/HourlyWeather";
+import "./WeatherStyle.css";
 
-export default function Weather({
+function Weather({
   coordinates
 }) {
 
-const {lng, lat} = coordinates; 
-const [weatherData, setWeatherData] = useState('');
-const [longitude, setLongitude] = useState(10);
-const [latitude, setLatitude] = useState(10) 
+  const {lng, lat} = coordinates; 
+  const [weatherData, setWeatherData] = useState("");
 
  
-    useEffect(() => {
-      const timer = setTimeout(() => {
+  useEffect(() => {
+    setTimeout(() => {
       console.log(lng, lat);
 
       
@@ -24,22 +22,23 @@ const [latitude, setLatitude] = useState(10)
         .then(data => {
           console.log(data)
           setWeatherData(data)
-          setLatitude(lat);
-          setLongitude(lng);
-        });
-      },1000);
-      },[weatherData, lng, lat]);
 
-      return (
-        <div className="weather">
-          {weatherData && (
-            <>
+        });
+    },1000);
+  },[lng, lat]);
+
+  return (
+    <div className="weather">
+      {weatherData && (
+        <>
           <CurrentWeather currentWeatherData={weatherData.current_weather}/>
           <HourlyWeather hourlyWeatherData={weatherData.hourly}/>
           <DailyWeather dailyWeatherData={weatherData.daily}/>          
-          </>
-          )} 
+        </>
+      )} 
          
-        </div>
-      );
+    </div>
+  );
 }
+
+export default React.memo(Weather);
