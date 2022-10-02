@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import CurrentWeather from "../CurrentWeather/CurrentWeather";
-import DailyWeather from "../DailyWeather/DailyWeather";
+// import DailyWeather from "../DailyWeather/DailyWeather";
 import HourlyWeather from "../HourlyWeather/HourlyWeather";
+import DailyWeatherCard from "../DailyWeather/DailyWeatherCard";
 import "./WeatherStyle.css";
 
-function Weather({
+function Weather({  
   coordinates
 }) {
 
@@ -33,7 +34,7 @@ function Weather({
         <>
           <CurrentWeather currentWeatherData={weatherData.current_weather}/>
           <HourlyWeather hourlyWeatherData={weatherData.hourly}/>
-          <DailyWeather dailyWeatherData={weatherData.daily}/>          
+          <DailyWeatherCard dailyWeatherData={weatherData.daily}/>          
         </>
       )} 
          
