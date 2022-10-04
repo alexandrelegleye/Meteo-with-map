@@ -52,7 +52,7 @@ export default function HourlyWeather({
               <th>Precipitaton</th>
               {hourlyWeatherData.precipitation.map((day, index) => (
                 index<24&&(
-                  <th key={day}>{day}mm</th>
+                  <th key={`${day} ${index}`}>{day}mm</th>
                 )))}
             </tr>
 
@@ -60,7 +60,7 @@ export default function HourlyWeather({
               <th>Wind Speed</th>
               {hourlyWeatherData.windspeed_10m.map((day,index ) => (
                 index<24&&(
-                  <th key={day}>{day}</th>
+                  <th key={`${day} ${index}`}>{day}</th>
                 )))}
             </tr>
 
@@ -68,7 +68,7 @@ export default function HourlyWeather({
               <th>Wind direction</th>
               {hourlyWeatherData.winddirection_10m.map((day,index) => (
                 index<24&&(
-                  <th key={day}>
+                  <th key={`${day} ${index}`}>
                     <img className="wind-arrow" style={{rotate:`${day+180}deg`}}
                       src={arrowWind}
                       alt="Arrow Wind" />

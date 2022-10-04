@@ -19,7 +19,9 @@ export default function DailyWeatherCard({
       <Card.Group itemsPerRow={7} stackable>
         {dailyWeatherData.time.map((day, index) => (
         // eslint-disable-next-line react/jsx-key
-          <Card>
+          <Card
+            key={day}
+          >
             <p></p>
             <p>Weather Code </p>
             <Card.Content>
