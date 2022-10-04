@@ -1,27 +1,38 @@
-import React, { useRef, useEffect} from "react";
-import maplibregl from "maplibre-gl";
-// import maplibre from 'maplibre-gl';
-import "./Map.css";
+import React from "react";
 
-export default function Map(
-  {state}
-){
-  const mapContainer = useRef(null);
-  const map = useRef(null);
- 
-  useEffect(() => {
-    if (map.current) return; //stops map from intializing more than once
-    map.current = new maplibregl.Map({
-      container: mapContainer.current,
-      style: `https://maps.geoapify.com/v1/styles/${state.style}/style.json?apiKey=${state.API_KEY}`,
-      center: [state.lng, state.lat],
-      zoom: state.zoom
-    });
-  });
+
+//Components
+import MapNavbar from "../MapNavbar/MapNavbar";
+import MapView from "../MapView/MapView";
+
+
+//Style
+
+function Map({
+  adress,
+  onStyleChange,
+  lng,
+  lat,
+  style,
+  zoom,
+  API_KEY,
+  firstInput,
+}) {
 
   return (
-    <div className="map-wrap">
-      <div ref={mapContainer} className="map" />
+    <div> {/* TODO Semantic UI pour le container */}
+      {firstInput && (
+        <>
+          <MapNavbar 
+            adressSelected={adress}
+            onStyleChange={onStyleChange}
+          />
+          <MapView key={`${style} ${lng} ${lat}`}
+            state={{lng, lat, zoom, API_KEY, style}}/>
+        </>
+      )}
     </div>
   );
 }
+
+export default Map;

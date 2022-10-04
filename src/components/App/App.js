@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import MainNavBar from "../MainNavBar/MainNavBar";
 
 //Components
-import MapNavbar from "../MapNavbar/MapNavbar"; 
 import Map from "../Map/Map";
 import SearchBar from "../SearchBar/SearchBar";
 import Weather from "../Weather/Weather";
@@ -36,16 +37,31 @@ function App() {
         API_KEY={API_KEY}
         OnAdressInput={handleAdress}
       />
-      {firstInput && (  // if no input map and weather are not render
-        <> 
-          <MapNavbar 
-            adressSelected={adress}
+      <MainNavBar />
+      <Routes>
+
+        <Route path='/' element={(
+          <Map 
+            adress={adress}
             onStyleChange={setStyle}
+            lng={lng}
+            lat={lat}
+            style={style}
+            zoom={zoom}
+            API_KEY={API_KEY}
+            firstInput={firstInput}
           />
-          <Map key={`${style} ${lng} ${lat}`} state={{lng, lat, zoom, API_KEY, style}}/>
-          <Weather  coordinates={{lng, lat}}/>
-        </>
-      )}
+        )} />
+        
+        <Route path='weather' element={(
+          <Weather
+            coordinates={{lng, lat}}
+            firstInput={firstInput}
+          />
+        )}
+        /> 
+      </Routes>      
+     
    
     </div>
   );

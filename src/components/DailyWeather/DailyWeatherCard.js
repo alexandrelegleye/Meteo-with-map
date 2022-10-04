@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import { Card, Icon} from "semantic-ui-react";
-import "semantic-ui-css/semantic.min.css";
+
 import "./DailyWeatherStyle.css";
 
 export default function DailyWeatherCard({
