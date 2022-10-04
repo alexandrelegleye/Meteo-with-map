@@ -35,7 +35,6 @@ function App() {
       <SearchBar
         API_KEY={API_KEY}
         OnAdressInput={handleAdress}
-        PrimaryInput={firstInput}
       />
       {firstInput && (  // if no input map and weather are not render
         <> 

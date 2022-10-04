@@ -6,7 +6,7 @@ import "./SearchBarStyle.css";
 const SearchBar = ({
   OnAdressInput,
   API_KEY,
-  PrimaryInput
+  // PrimaryInput
 }) => {
 
   //const value = '';
@@ -22,7 +22,7 @@ const SearchBar = ({
   function onSuggectionChange(value) {
     console.log(value);
   }
-
+  /* 
   function preprocessHook(value) {
     return `${value}, Munich, Germany`
   }
@@ -44,7 +44,7 @@ const SearchBar = ({
     })
 
     return filtered;
-  }
+  } */
 
   return <GeoapifyContext apiKey={API_KEY}>
 
