@@ -16,7 +16,7 @@ export default function DailyWeatherCard({
   return (
     <div className="weather-day">
       <h2>Méteo de la semaine: </h2>
-      <Card.Group itemsPerRow={7}>
+      <Card.Group itemsPerRow={7} stackable>
         {dailyWeatherData.time.map((day, index) => (
         // eslint-disable-next-line react/jsx-key
           <Card>
@@ -25,7 +25,7 @@ export default function DailyWeatherCard({
             <Card.Content>
               <Card.Header>{day}</Card.Header>
               <Card.Meta>
-                <span className='date'>Joined in 2015</span>
+                <span className='rain'> Précipitations: {dailyWeatherData.precipitation_sum[index]}mm</span>
               </Card.Meta>
               <Card.Description>
                 Temp: min {dailyWeatherData.temperature_2m_min[index]}°C / max  {dailyWeatherData.temperature_2m_max[index]}°C
