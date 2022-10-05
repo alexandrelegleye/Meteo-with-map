@@ -8,11 +8,11 @@ import "./WeatherStyle.css";
 import { Segment } from "semantic-ui-react";
 
 function Weather({  
-  coordinates,
+  lng,
+  lat,
   firstInput
 }) {
 
-  const {lng, lat} = coordinates; 
   const [weatherData, setWeatherData] = useState("");
 
   const FetchData = async(lat, lng) => {
@@ -28,7 +28,8 @@ function Weather({
 
   useEffect(() => {
     FetchData(lat, lng)
-  },[coordinates, firstInput])
+    console.log("new weather Fetch");
+  },[lat, lng, firstInput])
 
   return (
     <Segment>

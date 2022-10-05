@@ -55,7 +55,8 @@ function App() {
         
         <Route path='weather' element={(
           <Weather
-            coordinates={{lng, lat}}
+            lng={lng}
+            lat={lat}
             firstInput={firstInput}
           />
         )}
