@@ -1,10 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useRef, useEffect, useState } from "react";
 import arrowWind from "../../wind-arrow.png"
-import { AiOutlineArrowUp,  } from "react-icons/ai";
 import "./CurrentWeatherStyle.css";
 
-export default function CurrentWeather({
+function CurrentWeather({
   currentWeatherData
 }) {
  
@@ -32,3 +31,6 @@ export default function CurrentWeather({
     </div>
   );
 }
+
+export default React.memo(CurrentWeather);
+

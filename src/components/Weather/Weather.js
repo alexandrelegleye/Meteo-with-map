@@ -5,6 +5,7 @@ import CurrentWeather from "../CurrentWeather/CurrentWeather";
 import HourlyWeather from "../HourlyWeather/HourlyWeather";
 import DailyWeatherCard from "../DailyWeather/DailyWeatherCard";
 import "./WeatherStyle.css";
+import { Segment } from "semantic-ui-react";
 
 function Weather({  
   coordinates,
@@ -30,7 +31,7 @@ function Weather({
   },[coordinates, firstInput])
 
   return (
-    <div className="weather">
+    <Segment>
       {weatherData && firstInput && (
         <>
           <CurrentWeather currentWeatherData={weatherData.current_weather}/>
@@ -39,7 +40,7 @@ function Weather({
         </>
       )} 
          
-    </div>
+    </Segment>
   );
 }
 

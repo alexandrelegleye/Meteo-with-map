@@ -4,7 +4,7 @@ import arrowWind from "../../wind-arrow.png"
 import "./HourlyWeatherStyle.css";
 
 
-export default function HourlyWeather({
+function HourlyWeather({
   hourlyWeatherData
 }) {
  
@@ -12,7 +12,7 @@ export default function HourlyWeather({
     console.log("HourlylyWeather",   hourlyWeatherData, 
     );      
 
-  },[]);
+  },[hourlyWeatherData]);
 
   return (
     <div className="weather-hour ">
@@ -82,4 +82,4 @@ export default function HourlyWeather({
   ); 
 }
 
-
+export default React.memo(HourlyWeather);

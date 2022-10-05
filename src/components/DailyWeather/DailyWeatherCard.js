@@ -3,7 +3,7 @@ import { Card, Icon} from "semantic-ui-react";
 
 import "./DailyWeatherStyle.css";
 
-export default function DailyWeatherCard({
+function DailyWeatherCard({
   dailyWeatherData
 }) {
  
@@ -11,7 +11,7 @@ export default function DailyWeatherCard({
     console.log("DailyWeather",   dailyWeatherData, 
     );      
 
-  },[]);
+  },[dailyWeatherData]);
 
   return (
     <div className="weather-day">
@@ -47,3 +47,5 @@ export default function DailyWeatherCard({
     </div>
   );
 }
+
+export default React.memo(DailyWeatherCard);

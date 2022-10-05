@@ -1,5 +1,6 @@
 import React from "react"
 import { GeoapifyGeocoderAutocomplete, GeoapifyContext } from "@geoapify/react-geocoder-autocomplete"
+import {Segment} from "semantic-ui-react";
 import "@geoapify/geocoder-autocomplete/styles/minimal.css"
 import "./SearchBarStyle.css";
 
@@ -46,15 +47,16 @@ const SearchBar = ({
     return filtered;
   } */
 
-  return <GeoapifyContext apiKey={API_KEY}>
-
-    <GeoapifyGeocoderAutocomplete placeholder="Renseigner votre adresse"
-      lang='fr'
-      limit='5'
-      placeSelect={onPlaceSelect}
-      suggestionsChange={onSuggectionChange}
-    />
-    {/* 
+  return (
+    <Segment>
+      <GeoapifyContext apiKey={API_KEY}>
+        <GeoapifyGeocoderAutocomplete placeholder="Renseigner votre adresse"
+          lang='fr'
+          limit='5'
+          placeSelect={onPlaceSelect}
+          suggestionsChange={onSuggectionChange}
+        />
+        {/* 
       <GeoapifyGeocoderAutocomplete placeholder="Enter address here"
         value={value}
         lang='fr'
@@ -70,7 +72,9 @@ const SearchBar = ({
         postprocessHook={postprocessHook}
         suggestionsFilter={suggestionsFilter}
       /> */}
-  </GeoapifyContext>
+      </GeoapifyContext>
+    </Segment>
+  )
 }
 
 export default SearchBar;

@@ -1,4 +1,5 @@
 import React from "react";
+import { Segment } from "semantic-ui-react";
 
 
 //Components
@@ -20,7 +21,7 @@ function Map({
 }) {
 
   return (
-    <div> {/* TODO Semantic UI pour le container */}
+    <Segment> {/* TODO Semantic UI pour le container */}
       {firstInput && (
         <>
           <MapNavbar 
@@ -31,7 +32,7 @@ function Map({
             state={{lng, lat, zoom, API_KEY, style}}/>
         </>
       )}
-    </div>
+    </Segment>
   );
 }
 
