@@ -1,5 +1,12 @@
+
 .App {
-  width: 70vw;
+  width: 80vw;
   margin: auto;
   padding: 0;
+}
+
+@media screen and (max-width: 900px) {
+  .App {
+    width: 95vw;
+  }
 }
