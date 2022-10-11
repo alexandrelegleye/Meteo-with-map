@@ -3,6 +3,10 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import MainNavBar from "../MainNavBar/MainNavBar";
 
+// Redux
+import { Provider } from "react-redux";
+import store from "../../store/store";
+
 //Components
 import Map from "../Map/Map";
 import SearchBar from "../SearchBar/SearchBar";
@@ -32,39 +36,39 @@ function App() {
 
 
   return (
-    <div className="App">
-      <SearchBar
-        API_KEY={API_KEY}
-        OnAdressInput={handleAdress}
-      />
-      <MainNavBar />
-      <Routes>
+    <Provider store={store}>
+      <div className="App">
+        <SearchBar
+          API_KEY={API_KEY}
+          OnAdressInput={handleAdress}
+        />
+        <MainNavBar />
+        <Routes>
 
-        <Route path='/' element={(
-          <Map 
-            adress={adress}
-            onStyleChange={setStyle}
-            lng={lng}
-            lat={lat}
-            style={style}
-            zoom={zoom}
-            API_KEY={API_KEY}
-            firstInput={firstInput}
-          />
-        )} />
+          <Route path='/' element={(
+            <Map 
+              adress={adress}
+              onStyleChange={setStyle}
+              lng={lng}
+              lat={lat}
+              style={style}
+              zoom={zoom}
+              API_KEY={API_KEY}
+              firstInput={firstInput}
+            />
+          )} />
         
-        <Route path='weather' element={(
-          <Weather
-            lng={lng}
-            lat={lat}
-            firstInput={firstInput}
-          />
-        )}
-        /> 
-      </Routes>      
-     
-   
-    </div>
+          <Route path='weather' element={(
+            <Weather
+              lng={lng}
+              lat={lat}
+              firstInput={firstInput}
+            />
+          )}
+          /> 
+        </Routes>  
+      </div>
+    </Provider>
   );
 }
 

@@ -1,8 +1,14 @@
 import React from "react"
 import { GeoapifyGeocoderAutocomplete, GeoapifyContext } from "@geoapify/react-geocoder-autocomplete"
 import {Segment} from "semantic-ui-react";
+import { useDispatch } from "react-redux";
+import { getAdressFounded } from "../../actions/adressActions";
+
 import "@geoapify/geocoder-autocomplete/styles/minimal.css"
 import "./SearchBarStyle.css";
+
+
+// `https://api.geoapify.com/v1/geocode/autocomplete?text=${encodeURIComponent(currentValue)}&format=json&limit=5&apiKey=${apiKey}`
 
 const SearchBar = ({
   OnAdressInput,
@@ -10,68 +16,49 @@ const SearchBar = ({
   // PrimaryInput
 }) => {
 
+  const dispatch = useDispatch();
+
+
+  /*   function  handleAdress(AdressChoosed) {
+    const {lat, lon, formatted} = AdressChoosed.properties
+    console.log("APP:adress", AdressChoosed);
+    setLat(lat);
+    setLng(lon);
+    setAdress(formatted)
+    setFirstInput(true)
+  } */
+
   //const value = '';
 
   function onPlaceSelect(value) {
     if (!value.properties.lat){
       return
     } 
+    const {lat, lon, formatted} = value.properties;
     OnAdressInput(value)
+    dispatch(getAdressFounded({
+      lat: lat,
+      lng: lon,
+      formattedAdress: formatted
+    }))
 
   }
 
   function onSuggectionChange(value) {
     console.log(value);
   }
-  /* 
-  function preprocessHook(value) {
-    return `${value}, Munich, Germany`
-  }
-
-  function postprocessHook(feature) {
-    return feature.properties.street;
-  }
-
-  function suggestionsFilter(suggestions) {
-    const processedStreets = [];
-
-    const filtered = suggestions.filter(value => {
-      if (!value.properties.street || processedStreets.indexOf(value.properties.street) >= 0) {
-        return false;
-      } else {
-        processedStreets.push(value.properties.street);
-        return true;
-      }
-    })
-
-    return filtered;
-  } */
 
   return (
     <Segment>
       <GeoapifyContext apiKey={API_KEY}>
         <GeoapifyGeocoderAutocomplete placeholder="Renseigner votre adresse"
+          type='city'
           lang='fr'
           limit='5'
           placeSelect={onPlaceSelect}
           suggestionsChange={onSuggectionChange}
         />
-        {/* 
-      <GeoapifyGeocoderAutocomplete placeholder="Enter address here"
-        value={value}
-        lang='fr'
-        limit='5'
-        placeSelect={onPlaceSelect}
-        suggestionsChange={onSuggectionChange}
-      />
 
-      <GeoapifyGeocoderAutocomplete
-        placeSelect={onPlaceSelect}
-        suggestionsChange={onSuggectionChange}
-        preprocessHook={preprocessHook}
-        postprocessHook={postprocessHook}
-        suggestionsFilter={suggestionsFilter}
-      /> */}
       </GeoapifyContext>
     </Segment>
   )
