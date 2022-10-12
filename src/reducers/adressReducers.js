@@ -19,7 +19,7 @@ function AdressReducer(oldState = adressInitialState, action = {}) {
     const adressSearched = {
       lng: action.payload.lng,
       lat: action.payload.lat,
-      formattedAdress:action.payload.lng.formattedAdress,
+      formattedAdress:action.payload.formattedAdress,
       firstInput: true,
 
     }
