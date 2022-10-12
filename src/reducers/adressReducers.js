@@ -8,7 +8,6 @@ const adressInitialState = {
   style:"osm-carto",
   API_KEY:"74e4eaf562dc4ca59197628b419c2e9c",
   zoom:14,
-
 };
 
 function AdressReducer(oldState = adressInitialState, action = {}) {
