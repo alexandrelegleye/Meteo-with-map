@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CurrentWeather from "../CurrentWeather/CurrentWeather";
-// import DailyWeather from "../DailyWeather/DailyWeather";
 import HourlyWeather from "../HourlyWeather/HourlyWeather";
 import DailyWeatherCard from "../DailyWeather/DailyWeatherCard";
 import "./WeatherStyle.css";
 import { Segment } from "semantic-ui-react";
+import { useRecoilValue } from "recoil";
+import { wheaterDataNeeded } from "../../atomes/adressFoundedSelector";
 
-function Weather({  
-  lng,
-  lat,
-  firstInput
-}) {
+function Weather() {
+
+  const {lng, lat, firstInput} = useRecoilValue(wheaterDataNeeded)
 
   const [weatherData, setWeatherData] = useState("");
 

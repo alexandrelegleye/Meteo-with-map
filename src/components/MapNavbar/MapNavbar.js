@@ -3,13 +3,13 @@ import "./MapNavbar.css"
 
 export default function MapNavbar({
   onStyleChange,
-  adressSelected
+  formattedAdress
 }
 ){
   return (
     <div className="heading">
-      {adressSelected &&
-      <h1>{adressSelected}</h1>
+      {formattedAdress &&
+      <h1>{formattedAdress}</h1>
       }    
       <button type="button" className='styleButton' onClick={() => onStyleChange("osm-carto")}> 
     color

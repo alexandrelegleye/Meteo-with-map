@@ -1,48 +1,37 @@
 import React from "react";
 import { Segment } from "semantic-ui-react";
-import { useSelector } from "react-redux";
 
 //Components
 import MapNavbar from "../MapNavbar/MapNavbar";
 import MapView from "../MapView/MapView";
+import { useSetRecoilState, useRecoilValue, } from "recoil";
+import { mapDataNeeded } from "../../atomes/adressFoundedSelector";
+import { mapStyleState } from "../../atomes/adressFoundedAtoms";
 
 
 //Style
 
-function Map({
-  onStyleChange,
-  //adress,
-  //lng,
-  //lat,
-  // style,
-  //zoom,
-  //API_KEY,
-  //firstInput,
-}) {
+function Map() {
 
-  const lng = useSelector((state) => state.adress.lng);
-  const lat = useSelector((state) => state.adress.lat);
-  const style = useSelector((state) => state.adress.style);
-  const zoom = useSelector((state) => state.adress.zoom);
-  const API_KEY = useSelector((state) => state.adress.API_KEY);
-  const firstInput = useSelector((state) => state.adress.firstInput);
-  const adress = useSelector((state) => state.adress.formattedAdress);
+  const {lng, lat, zoom, apiKey, style, formattedAdress} = useRecoilValue(mapDataNeeded);
+  const setMapStyle = useSetRecoilState(mapStyleState);
 
-  const test = useSelector((state) => state.adress);
+  let firstInput= true;
 
-  //const long = useSelector((state) => state.adress.AdressInfo.lng);
-  console.log(test);
+  const changeMapStyle = (style) => {
+    console.log(style);
+    setMapStyle(style)
+  };
 
   return (
     <Segment> {/* TODO Semantic UI pour le container */}
       {firstInput && (
         <>
-          <MapNavbar 
-            adressSelected={adress}
-            onStyleChange={onStyleChange}
-          />
+          <MapNavbar
+            onStyleChange= {changeMapStyle}
+            formattedAdress= {formattedAdress}/>
           <MapView key={`${style} ${lng} ${lat}`}
-            state={{lng, lat, zoom, API_KEY, style}}/>
+            state={{lng, lat, zoom, apiKey, style}}/>
         </>
       )}
     </Segment>

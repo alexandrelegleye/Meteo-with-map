@@ -1,14 +1,10 @@
 import React from "react"
 import { GeoapifyGeocoderAutocomplete, GeoapifyContext } from "@geoapify/react-geocoder-autocomplete"
 import {Segment} from "semantic-ui-react";
-import { useDispatch } from "react-redux";
-import { getAdressFounded } from "../../actions/adressActions";
 
 import "@geoapify/geocoder-autocomplete/styles/minimal.css"
 import "./SearchBarStyle.css";
 
-
-// `https://api.geoapify.com/v1/geocode/autocomplete?text=${encodeURIComponent(currentValue)}&format=json&limit=5&apiKey=${apiKey}`
 
 const SearchBar = ({
   OnAdressInput,
@@ -16,31 +12,15 @@ const SearchBar = ({
   // PrimaryInput
 }) => {
 
-  const dispatch = useDispatch();
-
-
-  /*   function  handleAdress(AdressChoosed) {
-    const {lat, lon, formatted} = AdressChoosed.properties
-    console.log("APP:adress", AdressChoosed);
-    setLat(lat);
-    setLng(lon);
-    setAdress(formatted)
-    setFirstInput(true)
-  } */
-
-  //const value = '';
 
   function onPlaceSelect(value) {
     if (!value.properties.lat){
       return
     } 
-    const {lat, lon, formatted} = value.properties;
+
+    //const {lat, lon, formatted} = value.properties;
     OnAdressInput(value)
-    dispatch(getAdressFounded({
-      lat: lat,
-      lng: lon,
-      formattedAdress: formatted
-    }))
+    
 
   }
 
