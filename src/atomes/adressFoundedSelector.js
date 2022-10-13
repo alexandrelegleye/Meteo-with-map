@@ -1,6 +1,5 @@
 import { selector} from "recoil";
-import { apiKeyState, firstInputState, formattedAdressState, latState, lngState, mapStyleState, zoomState } from "./adressFoundedAtoms";
-import { weather } from "./weatherAtoms";
+import { apiKeyState, formattedAdressState, latState, lngState, mapStyleState, zoomState } from "./adressFoundedAtoms";
 
 
 export const mapDataNeeded = selector ({
@@ -21,17 +20,3 @@ export const mapDataNeeded = selector ({
 })
 
 
-export const weatherDataNeeded = selector ({
-  key:"weatherDataNeededState",
-  get: ({get}) => {
-    const dataNeeded = {
-      lng : get(lngState),
-      lat: get(latState),
-      firstInput: get(firstInputState),
-      weatherData: get(weather)
-    }
-  
-    return dataNeeded
-  }
-  
-})

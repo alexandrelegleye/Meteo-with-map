@@ -6,7 +6,7 @@ import DailyWeatherCard from "../DailyWeather/DailyWeatherCard";
 import "./WeatherStyle.css";
 import { Segment } from "semantic-ui-react";
 import { useRecoilValue } from "recoil";
-import { weatherDataNeeded } from "../../atomes/adressFoundedSelector";
+import { weatherDataNeeded } from "../../atomes/weatherSelector";
 // import fetchWeatherData from "../../requests/weatherRequest";
 
 function Weather() {
