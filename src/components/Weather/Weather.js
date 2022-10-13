@@ -6,15 +6,18 @@ import DailyWeatherCard from "../DailyWeather/DailyWeatherCard";
 import "./WeatherStyle.css";
 import { Segment } from "semantic-ui-react";
 import { useRecoilValue } from "recoil";
-import { wheaterDataNeeded } from "../../atomes/adressFoundedSelector";
+import { weatherDataNeeded } from "../../atomes/adressFoundedSelector";
+// import fetchWeatherData from "../../requests/weatherRequest";
 
 function Weather() {
 
-  const {lng, lat, firstInput} = useRecoilValue(wheaterDataNeeded)
+  const {lng, lat, firstInput} = useRecoilValue(weatherDataNeeded)
 
   const [weatherData, setWeatherData] = useState("");
 
+
   const FetchData = async(lat, lng) => {
+
     const response = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&hourly=temperature_2m,precipitation,rain,cloudcover,windspeed_10m,winddirection_10m,direct_radiation_instant&daily=precipitation_sum,weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset&current_weather=true&timezone=auto`)
     try{
       console.log(response.data)
@@ -23,10 +26,11 @@ function Weather() {
     catch (error) {
       console.log(error);
     }
-  }
+  } 
 
   useEffect(() => {
     FetchData(lat, lng)
+    // fetchWeatherData(lat,lng)
     console.log("new weather Fetch");
   },[lat, lng, firstInput])
 

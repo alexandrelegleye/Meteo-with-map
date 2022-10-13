@@ -24,7 +24,7 @@ function App() {
   const setLonState = useSetRecoilState(lngState);
   const setFormattedAdressState = useSetRecoilState(formattedAdressState);
 
-  function  handleAdress(AdressChoosed) {
+  const handleAdress = (AdressChoosed) => {
     const {lat, lon, formatted} = AdressChoosed.properties
     setLatState(lat);
     setLonState(lon);
