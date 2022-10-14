@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import { Card, Icon} from "semantic-ui-react";
+import WeatherCode from "../WeatherCode.js/WeatherCode";
 
 import "./DailyWeatherStyle.css";
 
@@ -23,7 +24,7 @@ function DailyWeatherCard({
             key={day}
           >
             <p></p>
-            <p>Weather Code </p>
+            <WeatherCode weatherCode={dailyWeatherData.weathercode[index]}/>
             <Card.Content>
               <Card.Header>{day}</Card.Header>
               <Card.Meta>
