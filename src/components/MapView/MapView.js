@@ -18,7 +18,7 @@ export default function MapView(
       center: [state.lng, state.lat],
       zoom: state.zoom
     });
-  });
+  },[state]);
 
   return (
     <div className="map-wrap">

@@ -5,7 +5,7 @@ import MainNavBar from "../MainNavBar/MainNavBar";
 
 // ReCoil
 import { useSetRecoilState } from "recoil";
-import { formattedAdressState, latState, lngState } from "../../atomes/adressFoundedAtoms";
+import { firstInputState, formattedAdressState, latState, lngState } from "../../atomes/adressFoundedAtoms";
 
 //Components
 import Map from "../Map/Map";
@@ -22,14 +22,16 @@ function App() {
   const [API_KEY] = useState("74e4eaf562dc4ca59197628b419c2e9c");
   const setLatState = useSetRecoilState(latState);
   const setLonState = useSetRecoilState(lngState);
+  const setFirstInput= useSetRecoilState(firstInputState)
   const setFormattedAdressState = useSetRecoilState(formattedAdressState);
 
   const handleAdress = (AdressChoosed) => {
     const {lat, lon, formatted} = AdressChoosed.properties
     setLatState(lat);
     setLonState(lon);
-    setFormattedAdressState(formatted)
-
+    setFirstInput(true);
+    setFormattedAdressState(formatted);
+    console.log("handleadress");
   }
 
 

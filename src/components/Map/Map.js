@@ -6,7 +6,7 @@ import MapNavbar from "../MapNavbar/MapNavbar";
 import MapView from "../MapView/MapView";
 import { useSetRecoilState, useRecoilValue, } from "recoil";
 import { mapDataNeeded } from "../../atomes/adressFoundedSelector";
-import { mapStyleState } from "../../atomes/adressFoundedAtoms";
+import { firstInputState, mapStyleState } from "../../atomes/adressFoundedAtoms";
 
 
 //Style
@@ -15,8 +15,9 @@ function Map() {
 
   const {lng, lat, zoom, apiKey, style, formattedAdress} = useRecoilValue(mapDataNeeded);
   const setMapStyle = useSetRecoilState(mapStyleState);
+  const firstInput = useRecoilValue(firstInputState)
 
-  let firstInput= true;
+  //let firstInput= true;
 
   const changeMapStyle = (style) => {
     console.log(style);

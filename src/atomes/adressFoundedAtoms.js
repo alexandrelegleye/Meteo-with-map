@@ -32,6 +32,6 @@ export const mapStyleState = atom({
 
 export const firstInputState = atom({
   key: "firstInputState",
-  default: true, 
+  default: false, 
 });
 

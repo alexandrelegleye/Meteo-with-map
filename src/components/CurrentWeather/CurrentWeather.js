@@ -4,11 +4,11 @@ import arrowWind from "../../wind-arrow.png"
 import "./CurrentWeatherStyle.css";
 
 function CurrentWeather({
-  currentWeatherData
+  currentWeatherData, test
 }) {
  
   useEffect(() => {
-    //console.log('currentWeatherData', currentWeatherData);      
+    //console.log('currentWeatherData', currentWeatherData);     
 
   },[currentWeatherData]);
 
