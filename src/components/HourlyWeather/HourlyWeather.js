@@ -1,85 +1,46 @@
 // eslint-disable-next-line no-unused-vars
 import React, {useEffect} from "react";
-import arrowWind from "../../wind-arrow.png"
+import WeatherCode from "../WeatherCode.js/WeatherCode";
+import { Card} from "semantic-ui-react";
 import "./HourlyWeatherStyle.css";
 
 
 function HourlyWeather({
-  hourlyWeatherData
+  hourlyForecast
 }) {
  
   useEffect(() => {
-    console.log("HourlylyWeather",   hourlyWeatherData, 
-    );      
+    console.log("hourlyForecast",   hourlyForecast);      
 
-  },[hourlyWeatherData]);
+  },[hourlyForecast]);
+
+
 
   return (
-    <div className="weather-hour ">
-      <h2>Méteo par heures: </h2>
-      <div className='table-container'>
-        <table className='table is-bordered is-striped is-hoverable' >
-          <thead> 
-            <tr className='is-selected'>
-              <th>
-                    Légende
-              </th>
-              {hourlyWeatherData.time.map((day, index) => (
-                index<24&&(
-                  <th key={day}>{day}</th>)
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-                  
-            <tr>
-              <th>Température Min</th>
-              {hourlyWeatherData.temperature_2m.map((day, index) => (
-                index<24&&(
-                  <th key={`${day} ${index}`}>{day}°C</th>
-                )))}
-            </tr>
+    <div className="weather-hourly">
+      {hourlyForecast.list.map((hour) => (
+        <Card key={hour.weather.dt}>
+          <WeatherCode weatherCode={hour.weather[0].icon}/>
+          <Card.Content>
+            <Card.Header>{hour.dt_txt}</Card.Header>
+            <Card.Meta> {Math.round(hour.main.temp)-273}°C {/* temp */} </Card.Meta>
+            
 
-            <tr>
-              <th>Cloudcover</th>
-              {hourlyWeatherData.cloudcover.map((day, index) => (
-                index<24&&(
-                  <th key={`${day} ${index}`}>{day}%</th>
-                )))}
-            </tr>
 
-            <tr>
-              <th>Precipitaton</th>
-              {hourlyWeatherData.precipitation.map((day, index) => (
-                index<24&&(
-                  <th key={`${day} ${index}`}>{day}mm</th>
-                )))}
-            </tr>
-
-            <tr>
-              <th>Wind Speed</th>
-              {hourlyWeatherData.windspeed_10m.map((day,index ) => (
-                index<24&&(
-                  <th key={`${day} ${index}`}>{day}</th>
-                )))}
-            </tr>
-
-            <tr>
-              <th>Wind direction</th>
-              {hourlyWeatherData.winddirection_10m.map((day,index) => (
-                index<24&&(
-                  <th key={`${day} ${index}`}>
-                    <img className="wind-arrow" style={{rotate:`${day+180}deg`}}
-                      src={arrowWind}
-                      alt="Arrow Wind" />
-                  </th>
-                )))}
-            </tr>
-          </tbody>
-        </table>
-      </div>
+              
+            <Card.Description>{Math.round(hour.wind.speed)} m/s {/* vent */}</Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            min:{Math.round(hour.main.temp_min)-273}°C
+            max:{Math.round(hour.main.temp_min)-273}°C{/* temp min/max */}
+          </Card.Content>
+         
+        </Card>
+      ))}
     </div>
-  ); 
+  );
+
+  
 }
 
 export default React.memo(HourlyWeather);

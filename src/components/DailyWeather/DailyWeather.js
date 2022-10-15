@@ -7,8 +7,8 @@ export default function DailyWeather({
 }) {
  
   useEffect(() => {
-    console.log("DailyWeather",   dailyWeatherData, 
-    );      
+    // console.log("DailyWeather",   dailyWeatherData, 
+    // );      
 
   },[]);
 

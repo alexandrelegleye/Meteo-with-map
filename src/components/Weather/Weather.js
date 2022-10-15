@@ -45,7 +45,7 @@ function Weather() {
   const {lng, lat, firstInput} = useRecoilValue(weatherDataNeeded)
   const [weatherDataRecoil, setWeatherDataRecoil] = useRecoilState(weatherState);
   const [weathercurrent, setweatherCurrent] = useState("");
-
+  const [weatherforecast, setWeatherforecast] = useState("");
   
 
   const FetchData = async (lat, lng) => {
@@ -53,8 +53,13 @@ function Weather() {
     try{
       
       setWeatherDataRecoil(await FetchDataRequest(lat,lng))
-      const weather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=0c959f66cbb15f0c61a032fc3aa73ea3`)
-      setweatherCurrent(weather.data)
+      const currentweather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=0c959f66cbb15f0c61a032fc3aa73ea3`)
+      setweatherCurrent(currentweather.data)
+
+      const forecast = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=0c959f66cbb15f0c61a032fc3aa73ea3`)
+      setWeatherforecast(forecast.data)
+      console.log("forecast in weather", forecast.data);
+      
     } 
     catch (error) {
       console.log(error);
@@ -73,7 +78,10 @@ function Weather() {
         <>
           <div className="weather-header">
             <CurrentWeather currentWeatherData={weathercurrent}/* {weatherDataRecoil.current_weather} *//>
-            <HourlyWeather hourlyWeatherData={weatherDataRecoil.hourly}/>
+            {weatherforecast &&
+            <HourlyWeather
+              hourlyForecast= {weatherforecast}
+            />}
           </div>
           <DailyWeatherCard dailyWeatherData={weatherDataRecoil.daily}/>          
         </>

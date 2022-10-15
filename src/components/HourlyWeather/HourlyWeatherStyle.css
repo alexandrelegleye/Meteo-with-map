@@ -5,7 +5,15 @@
     align-content: center;
 }
 
-.weather-hour
-{
+.table-container {
+    background-color: transparent;
+   
+}
+
+.weather-hourly{
     padding: 0 1rem;
+    display: flex;
+    overflow: scroll;
+    align-items: stretch;
+    
 }
