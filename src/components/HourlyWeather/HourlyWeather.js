@@ -19,10 +19,10 @@ function HourlyWeather({
       return 0
     }
     if (data.rain) {
-      if (data.rain['1h']) {
-        return data.rain['1h']
-      } else if (data.rain['3h'])
-        return data.rain['3h']
+      if (data.rain["1h"]) {
+        return data.rain["1h"]
+      } else if (data.rain["3h"])
+        return data.rain["3h"]
     }
   }
 
