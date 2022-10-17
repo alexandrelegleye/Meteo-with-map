@@ -1,4 +1,6 @@
 .weather-header{
     background-color: rgb(33, 146, 211);
-
+    /* overflow-x: hidden; */
+    box-sizing: border-box;
+    padding: 1rem;
 }
