@@ -29,9 +29,12 @@ function HourlyWeather({
 
 
   return (
+
     <div className="weather-hourly">
       {hourlyForecast.list.map((hour) => (
-        <Card key={hour.weather.dt}>
+        <Card
+          className="hourly-card"
+          key={hour.weather.dt}>
           <WeatherCode weatherCode={hour.weather[0].icon} />
           <Card.Content>
             <Card.Header>{hour.dt_txt}</Card.Header>

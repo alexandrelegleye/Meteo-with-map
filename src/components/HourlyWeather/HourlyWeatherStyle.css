@@ -1,19 +1,15 @@
-.wind-arrow {
-    height: 20px;
-    width: 20px;
-    margin: auto;
-    align-content: center;
-}
-
-.table-container {
-    background-color: transparent;
-   
-}
 
 .weather-hourly{
     padding: 0 1rem;
     display: flex;
     overflow: scroll;
     align-items: stretch;
+    margin-top: 1rem;
     
 }
+
+.hourly-card:first-child {
+ margin-top: 1em;
+ background-color: #f0f;
+}
+

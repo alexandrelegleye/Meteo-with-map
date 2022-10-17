@@ -53,7 +53,8 @@ function Weather() {
     try{
       
       setWeatherDataRecoil(await FetchDataRequest(lat,lng))
-      const currentweather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=0c959f66cbb15f0c61a032fc3aa73ea3`)
+      const currentweather = await axios.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lng}&units=metric&lang=fr&appid=0c959f66cbb15f0c61a032fc3aa73ea3`)
+      console.log("onecall", currentweather);
       setweatherCurrent(currentweather.data)
 
       const forecast = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=0c959f66cbb15f0c61a032fc3aa73ea3`)
@@ -77,7 +78,7 @@ function Weather() {
       {weatherDataRecoil && firstInput && (
         <>
           <div className="weather-header">
-            <CurrentWeather currentWeatherData={weathercurrent}/* {weatherDataRecoil.current_weather} *//>
+            <CurrentWeather currentWeatherData={weathercurrent.current}/* {weatherDataRecoil.current_weather} *//>
             {weatherforecast &&
             <HourlyWeather
               hourlyForecast= {weatherforecast}

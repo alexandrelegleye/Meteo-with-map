@@ -30,43 +30,35 @@ function CurrentWeather({
     rainValue= currentWeatherData.rain.1h;
   }  */
 
-  console.log("icon", currentWeatherData.weather[0].icon);
+  console.log("current", currentWeatherData)
+
 
   return (
     <div className="weather-current">
       <div className="weather-current-header" >
-        <p className="weather-current-temperature">{Math.round(currentWeatherData.main.temp)-273}°C</p>
+        <p className="weather-current-temperature">{Math.round(currentWeatherData.temp)}°C</p>
         < WeatherCode weatherCode= {currentWeatherData.weather[0].icon} />
-        <p className="weather-current-weathercode">{currentWeatherData.weather[0].main}</p>
+        <p className="weather-current-weathercode">{currentWeatherData.weather[0].description}</p>
       </div>
 
       <div className="weather-current-details" >
         
         <div className="weather-current-details-wind">
           <GiWindsock />
-          <p className="weather-current-wind">{currentWeatherData.wind.speed} m/s</p>
+          <p className="weather-current-wind">{currentWeatherData.wind_speed} m/s</p>
         </div>
 
         <div className="weather-current-details-rain">
           <SiRainmeter />
-          <p className="weather-current-rain">{rainValue} mm</p>
+          <p className="weather-current-rain">{currentWeatherData.humidity} %</p>
         </div>
 
         <div className="weather-current-details-pressure">
           <TbGauge/>
-          <p className="weather-current-pressure">{currentWeatherData.main.pressure} mbar</p>
+          <p className="weather-current-pressure">{currentWeatherData.pressure} mbar</p>
         </div>
 
       </div>
-
-      {/* <h2>Méteo Actuelle: </h2>
-      <p>Température de {currentWeatherData.temperature}</p>
-      <p>Vent de:  {currentWeatherData.windspeed}km/h</p>
-      <p>Direction :
-        <img className="wind-arrow" style={{rotate:`${currentWeatherData.winddirection+180}deg`}}
-          src={arrowWind}
-          alt="Arrow Wind" />
-      </p> */}
     </div>
   );
 }
