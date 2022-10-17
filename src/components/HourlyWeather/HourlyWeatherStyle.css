@@ -1,15 +1,13 @@
-
 .weather-hourly{
-    padding: 0 1rem;
+    padding: 1rem;
     display: flex;
-    overflow: scroll;
+    flex-wrap: nowrap !important;
+    overflow-x: scroll !important;
     align-items: stretch;
-    margin-top: 1rem;
     
 }
 
-.hourly-card:first-child {
- margin-top: 1em;
- background-color: #f0f;
+.hourly-card:hover {
+ background-color: rgb(174, 198, 221) !important;
 }
 

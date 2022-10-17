@@ -30,7 +30,7 @@ function HourlyWeather({
 
   return (
 
-    <div className="weather-hourly">
+    <Card.Group className="weather-hourly">
       {hourlyForecast.list.map((hour) => (
         <Card
           className="hourly-card"
@@ -49,7 +49,7 @@ function HourlyWeather({
 
         </Card>
       ))}
-    </div>
+    </Card.Group>
   );
 
 
