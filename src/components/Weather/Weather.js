@@ -2,7 +2,7 @@ import React, { useEffect, useState} from "react";
 import CurrentWeather from "../CurrentWeather/CurrentWeather";
 import HourlyWeather from "../HourlyWeather/HourlyWeather";
 import DailyWeatherCard from "../DailyWeather/DailyWeatherCard";
-import { Checkbox } from "semantic-ui-react"
+import { Button } from "semantic-ui-react"
 //import axios from "axios";
 
 // Recoil
@@ -19,7 +19,7 @@ import { Segment } from "semantic-ui-react";
 function Weather() {
 
   const {lng, lat, firstInput} = useRecoilValue(weatherDataNeeded)
-  const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState(true)
   const [weatherDataRecoil, setWeatherDataRecoil] = useRecoilState(weatherState);
 
 
@@ -44,23 +44,30 @@ function Weather() {
         <>
           <div className="weather-header">
             <CurrentWeather currentWeatherData={weatherDataRecoil.current}/>
-            <Checkbox toggle
+            <Button.Group
               style={{
-                marginTop:"1rem"
+                margin:"1rem"
               }}
-              onChange={() => setToggle(!toggle)}
-              checked={toggle}
-            />
-            {!toggle? 
-              <>
-                <p className="toggle-Text">Prévision h/h</p>
-                <HourlyWeather hourlyForecast= {weatherDataRecoil.hourly}/>
-              </>
+            >
+              <Button
+                positive={toggle}
+                onClick={() => setToggle(true)}
+              >
+              Hourly Forecast
+              </Button>
+              <Button.Or />
+              <Button
+                positive={!toggle}
+                onClick={() => setToggle(false)}
+              >
+                Daily Forecast
+              </Button>
+            </Button.Group>
+
+            {toggle? 
+              <HourlyWeather hourlyForecast= {weatherDataRecoil.hourly}/>
               :
-              <>
-                <p className="toggle-Text">Prévision de la semaine</p>
-                <DailyWeatherCard dailyWeatherData={weatherDataRecoil.daily}/>
-              </>
+              <DailyWeatherCard dailyWeatherData={weatherDataRecoil.daily}/>
             }
            
           </div>

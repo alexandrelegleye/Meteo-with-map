@@ -29,7 +29,7 @@ function DailyWeatherCard({
       stackable
     >
       {dailyWeatherData?.map((day, index) => (
-        index <6 && (
+        index <5 && (
           <Card 
             style={{
               marginTop: "2rem",
