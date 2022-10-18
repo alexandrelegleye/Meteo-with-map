@@ -17,6 +17,7 @@ function Map() {
   const setMapStyle = useSetRecoilState(mapStyleState);
   const firstInput = useRecoilValue(firstInputState)
 
+  // eslint-disable-next-line no-unused-vars
   const changeMapStyle = (style) => {
     console.log(style);
     setMapStyle(style)
@@ -27,7 +28,7 @@ function Map() {
       {firstInput && (
         <>
           <MapNavbar
-            onStyleChange= {changeMapStyle}
+            // onStyleChange= {changeMapStyle}
             formattedAdress= {formattedAdress}/>
           <MapView key={`${style} ${lng} ${lat}`}
             lng={lng}
