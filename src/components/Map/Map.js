@@ -17,22 +17,25 @@ function Map() {
   const setMapStyle = useSetRecoilState(mapStyleState);
   const firstInput = useRecoilValue(firstInputState)
 
-  //let firstInput= true;
-
   const changeMapStyle = (style) => {
     console.log(style);
     setMapStyle(style)
   };
 
   return (
-    <Segment> {/* TODO Semantic UI pour le container */}
+    <Segment> 
       {firstInput && (
         <>
           <MapNavbar
             onStyleChange= {changeMapStyle}
             formattedAdress= {formattedAdress}/>
           <MapView key={`${style} ${lng} ${lat}`}
-            state={{lng, lat, zoom, apiKey, style}}/>
+            lng={lng}
+            lat={lat}
+            zoom={zoom}
+            apiKey={apiKey}
+            style={style}
+          />
         </>
       )}
     </Segment>

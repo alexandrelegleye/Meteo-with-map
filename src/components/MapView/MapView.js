@@ -4,21 +4,29 @@ import maplibregl from "maplibre-gl";
 import "./MapViewStyle.css";
 
 export default function MapView(
-  {state}
-){
+  {lng,
+    lat,
+    zoom,
+    apiKey,
+    style,
+  }){
   const mapContainer = useRef(null);
   const map = useRef(null);
-  console.log("stateMapView" ,state);
+  //console.log("stateMapView" ,state);
  
   useEffect(() => {
     if (map.current) return; //stops map from intializing more than once
     map.current = new maplibregl.Map({
       container: mapContainer.current,
-      style: `https://maps.geoapify.com/v1/styles/${state.style}/style.json?apiKey=${state.apiKey}`,
-      center: [state.lng, state.lat],
-      zoom: state.zoom
+      style: `https://maps.geoapify.com/v1/styles/${style}/style.json?apiKey=${apiKey}`,
+      center: [lng, lat],
+      zoom: zoom
     });
-  },[state]);
+  },[lng,
+    lat,
+    zoom,
+    apiKey,
+    style,]);
 
   return (
     <div className="map-wrap">
