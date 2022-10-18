@@ -3,76 +3,56 @@ import React, { useEffect } from "react";
 import WeatherCode from "../WeatherCode.js/WeatherCode";
 import { Card } from "semantic-ui-react";
 import "./HourlyWeatherStyle.css";
-
+import { formatTimeStamp } from "../../utils/weatherUtils";
+import { handleRain } from "../../utils/weatherUtils";
+import {SiRainmeter} from "react-icons/si" // pluie
+import {GiWindsock} from "react-icons/gi";  // vent
+import {TbGauge} from "react-icons/tb" // barometre
 
 function HourlyWeather({
   hourlyForecast
 }) {
 
   useEffect(() => {
-    console.log("hourlyForecast", hourlyForecast);
+    //console.log("hourlyForecast", hourlyForecast);
 
   }, [hourlyForecast]);
 
-  const handleRain = (data) => {
-    if (!data.rain) {
-      return 0
-    }
-    if (data.rain) {
-      if (data.rain["1h"]) {
-        return data.rain["1h"]
-      } else if (data.rain["3h"])
-        return data.rain["3h"]
-    }
-  }
-
-
-
-  const formatTimeStamp = (ts) => {
-    const dateToFormat = new Date(ts);
-    const options = { weekday: "long" };
-    const day = new Intl.DateTimeFormat("fr-FR", options).format(dateToFormat);
-    const heure = dateToFormat.getHours();
-    let textHour = "";
-
-    switch (heure) {
-    case 12:
-      textHour = "midi";
-      break;
-    case 0:
-      textHour = "minuit";
-      break;
-    default:
-      textHour = `${heure}h`;
-    }
-    
-    return (
-      `${day} à ${textHour}`
-    );
-
-  };
-  
-
-
-
   return (
 
-    <Card.Group className="weather-hourly">
-      {hourlyForecast.list.map((hour) => (
-        <Card
+    <Card.Group className="weather-hourly"
+    >
+      {hourlyForecast.map((hour) => (
+        <Card 
+          style={{
+            minWidth: "120px",
+            textAlign:"center"
+          }}
           className="hourly-card"
-          key={hour.weather.dt}>
+          key={hour.dt}>
           <WeatherCode 
-            weatherCode={hour.weather[0].icon} />
-          <Card.Content>
-            <Card.Header>{formatTimeStamp(hour.dt_txt)}</Card.Header>
-            <Card.Meta> {Math.round(hour.main.temp) - 273}°C {/* temp */} </Card.Meta>
-            <Card.Description>{handleRain(hour)} mm {/* pluie */}</Card.Description>
-            <Card.Description>{Math.round(hour.wind.speed)} m/s {/* vent */}</Card.Description>
+            weatherCode={hour.weather[0].icon}
+            temp={Math.round(hour.temp)}
+          />
+          {hour.weather[0].description}
+          <Card.Content
+            style={{
+              textAlign:"left"
+            }}
+          >
+            <Card.Header>{formatTimeStamp((hour.dt*1000))}</Card.Header>
+            <Card.Description>
+              <SiRainmeter/>
+              {handleRain(hour)} mm {/* pluie */}
+            </Card.Description>
+            <Card.Description>
+              <GiWindsock />
+              {Math.round(hour.wind_speed)} m/s {/* vent */}
+            </Card.Description>
           </Card.Content>
           <Card.Content extra>
-            min:{Math.round(hour.main.temp_min) - 273}°C
-            max:{Math.round(hour.main.temp_max) - 273}°C{/* temp min/max */}
+            < TbGauge />
+            {hour.pressure} mbar
           </Card.Content>
 
         </Card>

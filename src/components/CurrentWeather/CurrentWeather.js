@@ -1,7 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useRef, useEffect, useState } from "react";
-//import arrowWind from "../../wind-arrow.png"
-import "./CurrentWeatherStyle.css";
+import React from "react";
 import WeatherCode from "../WeatherCode.js/WeatherCode";
 
 // icons de react-icons
@@ -9,30 +6,13 @@ import {GiWindsock} from "react-icons/gi";  // vent
 import {SiRainmeter} from "react-icons/si" // pluie
 import {TbGauge} from "react-icons/tb" // barometre
 
+// style
+import "./CurrentWeatherStyle.css";
+
 function CurrentWeather({
-  currentWeatherData, test
+  currentWeatherData
 }) {
  
-  useEffect(() => {
-    //console.log('currentWeatherData', currentWeatherData);     
-
-  },[currentWeatherData]);
-
-  if (!currentWeatherData){
-    return(
-      <p> No Data Yet!!</p>
-    )
-  }
-
-  let rainValue = 0
-
-  /*  if (currentWeatherData.rain){
-    rainValue= currentWeatherData.rain.1h;
-  }  */
-
-  console.log("current", currentWeatherData)
-
-
   return (
     <div className="weather-current">
       <div className="weather-current-header" >

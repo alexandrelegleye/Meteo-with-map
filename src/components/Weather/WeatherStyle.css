@@ -4,3 +4,8 @@
     box-sizing: border-box;
     padding: 1rem;
 }
+
+.toggle-Text{
+    color:#fff;
+    font-size: 1.5rem;
+}
