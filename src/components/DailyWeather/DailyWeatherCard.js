@@ -5,7 +5,7 @@ import { TbGauge } from "react-icons/tb";
 import {FiSun} from "react-icons/fi";
 import {RiMoonClearLine} from "react-icons/ri";
 import { Card} from "semantic-ui-react";
-import { getDayOnly,getTimeOnly,  handleRain } from "../../utils/weatherUtils";
+import { getDayOnly,getTimeOnly } from "../../utils/weatherUtils";
 import WeatherCode from "../WeatherCode.js/WeatherCode";
 
 import "./DailyWeatherStyle.css";
@@ -52,7 +52,7 @@ function DailyWeatherCard({
               <Card.Header>{getDayOnly((day.dt*1000))}</Card.Header>
               <Card.Description>
                 <SiRainmeter/>
-                {handleRain(day)} mm {/* pluie */}
+                {day.rain || 0} mm {/* pluie */}
               </Card.Description>
               <Card.Description>
                 <div>
