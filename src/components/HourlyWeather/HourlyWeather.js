@@ -28,6 +28,33 @@ function HourlyWeather({
 
 
 
+  const formatTimeStamp = (ts) => {
+    const dateToFormat = new Date(ts);
+    const options = { weekday: "long" };
+    const day = new Intl.DateTimeFormat("fr-FR", options).format(dateToFormat);
+    const heure = dateToFormat.getHours();
+    let textHour = "";
+
+    switch (heure) {
+    case 12:
+      textHour = "midi";
+      break;
+    case 0:
+      textHour = "minuit";
+      break;
+    default:
+      textHour = `${heure}h`;
+    }
+    
+    return (
+      `${day} à ${textHour}`
+    );
+
+  };
+  
+
+
+
   return (
 
     <Card.Group className="weather-hourly">
@@ -35,9 +62,10 @@ function HourlyWeather({
         <Card
           className="hourly-card"
           key={hour.weather.dt}>
-          <WeatherCode weatherCode={hour.weather[0].icon} />
+          <WeatherCode 
+            weatherCode={hour.weather[0].icon} />
           <Card.Content>
-            <Card.Header>{hour.dt_txt}</Card.Header>
+            <Card.Header>{formatTimeStamp(hour.dt_txt)}</Card.Header>
             <Card.Meta> {Math.round(hour.main.temp) - 273}°C {/* temp */} </Card.Meta>
             <Card.Description>{handleRain(hour)} mm {/* pluie */}</Card.Description>
             <Card.Description>{Math.round(hour.wind.speed)} m/s {/* vent */}</Card.Description>

@@ -9,7 +9,11 @@ function WeatherCode({
   console.log("icon weather code component" ,weatherCode);
   return (
    
-    <img src={`http://openweathermap.org/img/wn/${weatherCode}@2x.png`} alt='weather code with Icon'/>
+    <img 
+      className="hourly-card-code"
+      src={`http://openweathermap.org/img/wn/${weatherCode}@2x.png`}
+      alt='weather code with Icon'
+    />
     
 
   );
