@@ -2,7 +2,7 @@ import React, { useEffect, useState} from "react";
 import CurrentWeather from "../CurrentWeather/CurrentWeather";
 import HourlyWeather from "../HourlyWeather/HourlyWeather";
 import DailyWeatherCard from "../DailyWeather/DailyWeatherCard";
-import { Button } from "semantic-ui-react"
+import { Button, Loader, Dimmer } from "semantic-ui-react"
 //import axios from "axios";
 
 // Recoil
@@ -19,17 +19,23 @@ import { Segment } from "semantic-ui-react";
 function Weather() {
 
   const {lng, lat, firstInput} = useRecoilValue(weatherDataNeeded)
-  const [toggle, setToggle] = useState(true)
   const [weatherDataRecoil, setWeatherDataRecoil] = useRecoilState(weatherState);
+
+  const [toggle, setToggle] = useState(true)
+  // eslint-disable-next-line no-unused-vars
+  const [isLoading, setIsLoading] = useState (false)
 
 
   const FetchData = async (lat, lng) => {
+    setIsLoading(true)
     try{      
       setWeatherDataRecoil(await FetchDataRequest(lat,lng))
     } 
     catch (error) {
       console.log(error);
-    }};
+    }
+    setIsLoading(false)
+  };
 
 
   useEffect(() => {
@@ -40,6 +46,22 @@ function Weather() {
 
   return (
     <Segment>
+
+      {isLoading && 
+ <div className="weather-header"
+   style={{
+     margin:"1rem"
+   }}
+ >
+   <Dimmer inverted active>
+     <Loader
+       size='big'
+       content='Loading'
+     />
+   </Dimmer>
+ </div>
+      }      
+      
       {weatherDataRecoil && firstInput && (
         <>
           <div className="weather-header">

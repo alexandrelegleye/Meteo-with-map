@@ -4,7 +4,7 @@ import maplibregl from "maplibre-gl";
 // import maplibre from 'maplibre-gl';
 import "./MapViewStyle.css";
 
-export default function MapView2(
+export default function MapView(
   {lng,
     lat,
     zoom,
@@ -22,7 +22,7 @@ export default function MapView2(
       style: `https://maps.geoapify.com/v1/styles/${style}/style.json?apiKey=${apiKey}`,
       center: [lng, lat],
       zoom: zoom
-    });
+    })
   },[lng,
     lat,
     zoom,
