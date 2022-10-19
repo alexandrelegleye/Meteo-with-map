@@ -11,8 +11,10 @@ import Map from "../Map/Map";
 import SearchBar from "../SearchBar/SearchBar";
 import Weather from "../Weather/Weather";
 
+
 //Style
 import "./App.css";
+import { Header } from "semantic-ui-react";
 
 
 function App() {
@@ -38,6 +40,14 @@ function App() {
   return (
 
     <div className="App">
+      <Header
+        as='h1'
+        textAlign='center'
+        color="blue"
+        padding='1rem'
+      >
+       Weather App
+      </Header>
       <SearchBar
         API_KEY={ApiKey}
         OnAdressInput={handleAdress}
