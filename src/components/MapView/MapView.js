@@ -1,9 +1,10 @@
 import React, { useRef, useEffect} from "react";
 import maplibregl from "maplibre-gl";
+
 // import maplibre from 'maplibre-gl';
 import "./MapViewStyle.css";
 
-export default function MapView(
+export default function MapView2(
   {lng,
     lat,
     zoom,
