@@ -48,11 +48,7 @@ function Weather() {
     <Segment>
 
       {isLoading && 
- <div className="weather-header"
-   style={{
-     margin:"1rem"
-   }}
- >
+ <div className="weather-loader">
    <Dimmer inverted active>
      <Loader
        size='big'

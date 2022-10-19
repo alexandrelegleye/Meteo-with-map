@@ -9,3 +9,8 @@
     color:#fff;
     font-size: 1.5rem;
 }
+
+.weather-loader{
+    padding: 1rem;
+    margin: 1rem;
+}
