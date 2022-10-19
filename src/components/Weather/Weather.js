@@ -2,7 +2,8 @@ import React, { useEffect, useState} from "react";
 import CurrentWeather from "../CurrentWeather/CurrentWeather";
 import HourlyWeather from "../HourlyWeather/HourlyWeather";
 import DailyWeatherCard from "../DailyWeather/DailyWeatherCard";
-import { Button, Loader, Dimmer } from "semantic-ui-react"
+import { Button} from "semantic-ui-react";
+import sunLoader from "./sunLoader.png"
 //import axios from "axios";
 
 // Recoil
@@ -49,12 +50,10 @@ function Weather() {
 
       {isLoading && 
  <div className="weather-loader">
-   <Dimmer inverted active>
-     <Loader
-       size='big'
-       content='Loading'
-     />
-   </Dimmer>
+   <img
+     className="sun-loader"
+     src={sunLoader}
+     alt="sun while loading" />
  </div>
       }      
       

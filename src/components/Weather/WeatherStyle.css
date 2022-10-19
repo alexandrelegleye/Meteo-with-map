@@ -13,4 +13,26 @@
 .weather-loader{
     padding: 1rem;
     margin: 1rem;
+    align-items: center;
+}
+
+.sun-loader{
+    display: block;
+    margin: auto ;
+    height: 150px;
+    width: 150px;
+    animation: rotate-animation 5s infinite linear;
+}
+
+
+@keyframes rotate-animation {
+	0% {
+		transform: rotate(0deg);
+  }
+  50% {
+		transform: rotate(180deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
