@@ -8,8 +8,8 @@ import { handleRain } from "../../utils/weatherUtils";
 import {SiRainmeter} from "react-icons/si" // pluie
 import {GiWindsock} from "react-icons/gi";  // vent
 import {TbGauge} from "react-icons/tb" // barometre
-import {BsPlusCircle} from "react-icons/bs" // plus 
-import {BiMinusCircle} from "react-icons/bi" // moins
+import {BiSkipPreviousCircle, BiSkipNextCircle} from "react-icons/bi" // moins / plus
+
 
 function HourlyWeather({
   hourlyForecast
@@ -27,7 +27,7 @@ function HourlyWeather({
     setItems(itemfilter)
   }
 
-  const handlePlusIcon = () => {
+  const handleNextIcon = () => {
     const actualPage= page ; 
     if(page === 42){
       return
@@ -36,7 +36,7 @@ function HourlyWeather({
     setPage((actualPage+6))
   }
 
-  const handleMinusIcon = () => {
+  const handlePreviousIcon = () => {
     const actualPage= page ; 
     if(page === 0){
       return
@@ -52,13 +52,32 @@ function HourlyWeather({
 
   return (
     <div>
+
       {page > 0 &&
-      <BiMinusCircle 
+      <BiSkipPreviousCircle 
+        style={{
+          position:"absolute",
+          left:"2rem"
+        }}
         className="pages-icons"
-        onClick={() => handleMinusIcon()}
+        onClick={() => handlePreviousIcon()}
       />
-      }  
+      } 
+      {page <42 &&
+      <BiSkipNextCircle
+        style={{
+          position:"absolute",
+          right:"2rem"
+        }}
+        className="pages-icons"
+        onClick={() => handleNextIcon()}
+      />
+      }
+
       <Card.Group className="weather-hourly"
+        style={{
+          justifyContent:"space-evenly"
+        }}
       >
         {items && items.map((hour) => (
           <Card         
@@ -98,12 +117,7 @@ function HourlyWeather({
           </Card>  
         ))}        
       </Card.Group>
-      {page <42 &&
-      <BsPlusCircle
-        className="pages-icons"
-        onClick={() => handlePlusIcon()}
-      />
-      }
+      
     </div>
   );
 }
