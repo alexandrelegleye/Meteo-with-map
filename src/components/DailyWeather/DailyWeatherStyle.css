@@ -1,3 +1,7 @@
 .weather-day{
     padding: 0 1rem;
 }
+
+.daily-card:hover{
+    background-color: #aec6dd !important;  
+}

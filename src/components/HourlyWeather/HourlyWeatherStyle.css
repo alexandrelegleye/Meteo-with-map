@@ -1,17 +1,30 @@
 .weather-hourly{
     padding: 1rem;
     display: flex;
-    flex-wrap: nowrap !important;
-    overflow-x: scroll !important;
-    align-items: stretch;
+/*     flex-wrap: nowrap !important;
+    overflow-x: scroll !important; */
+    align-items: center;
     
 }
 
 .hourly-card:hover {
- background-color: rgb(174, 198, 221) !important;
+ background-color: #aec6dd !important;
 }
 
 .hourly-card-code{
     height: 90px;
 
+}
+
+.pages-icons{
+    height: 2rem;
+    width: 2rem;
+    color:#fff;
+    transition: all 0.5s ease;
+}
+
+.pages-icons:hover{
+    height: 2.5rem;
+    width: 2.5rem;
+    color:#21BA45
 }

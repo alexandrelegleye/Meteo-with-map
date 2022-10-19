@@ -6,7 +6,6 @@ import "@geoapify/geocoder-autocomplete/styles/minimal.css"
 import "./SearchBarStyle.css";
 
 
-
 const SearchBar = ({
   OnAdressInput,
   API_KEY,
@@ -19,11 +18,7 @@ const SearchBar = ({
     if (!value.properties.lat){
       return
     } 
-
-    //const {lat, lon, formatted} = value.properties;
-    OnAdressInput(value)
-    
-
+    OnAdressInput(value) 
   }
 
   function onSuggectionChange(value) {
@@ -40,7 +35,6 @@ const SearchBar = ({
           placeSelect={onPlaceSelect}
           suggestionsChange={onSuggectionChange}
         />
-
       </GeoapifyContext>
     </Segment>
   )

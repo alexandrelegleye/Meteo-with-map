@@ -9,7 +9,7 @@ const FetchDataRequest = async (lat, lng) => {
         lat: lat,
         lon: lng,
         units: "metric",
-        lang: "fr",
+        //lang: "fr",
       },
     })  
     console.log(response.data)
