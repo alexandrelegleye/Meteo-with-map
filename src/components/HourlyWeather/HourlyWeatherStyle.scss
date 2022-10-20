@@ -21,10 +21,11 @@
     width: 2rem;
     color:#fff;
     transition: all 0.5s ease;
+
+    &:hover{
+        height: 2.5rem;
+        width: 2.5rem;
+        color:#21BA45
+    }
 }
 
-.pages-icons:hover{
-    height: 2.5rem;
-    width: 2.5rem;
-    color:#21BA45
-}

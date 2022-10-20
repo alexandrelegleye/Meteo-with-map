@@ -3,7 +3,7 @@ import { GeoapifyGeocoderAutocomplete, GeoapifyContext } from "@geoapify/react-g
 import {Segment} from "semantic-ui-react";
 
 import "@geoapify/geocoder-autocomplete/styles/minimal.css"
-import "./SearchBarStyle.css";
+import "./SearchBarStyle.scss";
 
 
 const SearchBar = ({

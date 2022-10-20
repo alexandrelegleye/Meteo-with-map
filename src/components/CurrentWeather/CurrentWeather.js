@@ -7,7 +7,7 @@ import {SiRainmeter} from "react-icons/si" // pluie
 import {TbGauge} from "react-icons/tb" // barometre
 
 // style
-import "./CurrentWeatherStyle.css";
+import "./CurrentWeatherStyle.scss";
 
 function CurrentWeather({
   currentWeatherData

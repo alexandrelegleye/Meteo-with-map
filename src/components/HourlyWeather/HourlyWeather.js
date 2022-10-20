@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import WeatherCode from "../WeatherCode.js/WeatherCode";
 import { Card } from "semantic-ui-react";
-import "./HourlyWeatherStyle.css";
+import "./HourlyWeatherStyle.scss";
 import { formatTimeStamp } from "../../utils/weatherUtils";
 import { handleRain } from "../../utils/weatherUtils";
 import {SiRainmeter} from "react-icons/si" // pluie

@@ -2,7 +2,7 @@ import React, { useRef, useEffect} from "react";
 import maplibregl from "maplibre-gl";
 
 // import maplibre from 'maplibre-gl';
-import "./MapViewStyle.css";
+import "./MapViewStyle.scss";
 
 export default function MapView(
   {lng,

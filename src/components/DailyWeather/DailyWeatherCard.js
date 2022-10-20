@@ -8,7 +8,7 @@ import { Card} from "semantic-ui-react";
 import { getDayOnly,getTimeOnly } from "../../utils/weatherUtils";
 import WeatherCode from "../WeatherCode.js/WeatherCode";
 
-import "./DailyWeatherStyle.css";
+import "./DailyWeatherStyle.scss";
 
 function DailyWeatherCard({
   dailyWeatherData
@@ -29,7 +29,7 @@ function DailyWeatherCard({
       stackable
     >
       {dailyWeatherData?.map((day, index) => (
-        index <5 && (
+        index <6 && (
           <Card 
             style={{
               marginTop: "2rem",

@@ -14,7 +14,7 @@ import FetchDataRequest from "../../requests/weatherRequest";
 
 
 // style
-import "./WeatherStyle.css";
+import "./WeatherStyle.scss";
 import { Segment } from "semantic-ui-react";
 
 function Weather() {

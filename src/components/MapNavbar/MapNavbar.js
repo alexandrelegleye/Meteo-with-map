@@ -1,5 +1,5 @@
 import React from "react";
-import "./MapNavbar.css"
+import "./MapNavbar.scss"
 
 export default function MapNavbar({
   // onStyleChange,

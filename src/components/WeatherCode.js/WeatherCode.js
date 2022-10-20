@@ -1,5 +1,5 @@
 import React from "react";
-import "./weatherCodeStyles.css";
+import "./weatherCodeStyles.scss";
 
 function WeatherCode({
   weatherCode, temp

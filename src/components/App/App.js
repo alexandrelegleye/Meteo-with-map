@@ -13,7 +13,7 @@ import Weather from "../Weather/Weather";
 
 
 //Style
-import "./App.css";
+import "./App.scss";
 import { Header } from "semantic-ui-react";
 
 
