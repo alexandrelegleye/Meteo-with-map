@@ -1,11 +1,13 @@
 import axios from "axios";
 
+
+
 const FetchDataRequest = async (lat, lng) => {
   console.log(lat, lng);
   try{
     const response = await axios.get("https://api.openweathermap.org/data/3.0/onecall",{
       params: {
-        appid: "0c959f66cbb15f0c61a032fc3aa73ea3",
+        appid: process.env.REACT_APP_WEATHERKEY,
         lat: lat,
         lon: lng,
         units: "metric",

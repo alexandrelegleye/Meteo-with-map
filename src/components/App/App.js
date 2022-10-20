@@ -15,6 +15,7 @@ import Weather from "../Weather/Weather";
 //Style
 import "./App.scss";
 import { Header } from "semantic-ui-react";
+//import Auth from "./Login/Auth";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
   return (
 
     <div className="App">
+      {/* <Auth /> */}
       <Header
         as='h1'
         textAlign='center'

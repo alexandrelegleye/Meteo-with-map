@@ -22,7 +22,7 @@ export const zoomState = atom({
 
 export const apiKeyState = atom({
   key: "apiKeyState",
-  default: "74e4eaf562dc4ca59197628b419c2e9c", 
+  default: process.env.REACT_APP_GEOCODERKEY, 
 });
 
 export const mapStyleState = atom({

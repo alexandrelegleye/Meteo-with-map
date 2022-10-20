@@ -1,6 +1,7 @@
 import React, { useRef, useEffect} from "react";
 import maplibregl from "maplibre-gl";
 
+// import maplibre from 'maplibre-gl';
 import "./MapViewStyle.scss";
 
 export default function MapView(
@@ -12,9 +13,10 @@ export default function MapView(
   }){
   const mapContainer = useRef(null);
   const map = useRef(null);
+  //console.log("stateMapView" ,state);
  
   useEffect(() => {
-    if (map.current) return;
+    if (map.current) return; //stops map from intializing more than once
     map.current = new maplibregl.Map({
       container: mapContainer.current,
       style: `https://maps.geoapify.com/v1/styles/${style}/style.json?apiKey=${apiKey}`,
