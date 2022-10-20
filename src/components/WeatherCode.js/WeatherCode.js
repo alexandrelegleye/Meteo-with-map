@@ -1,6 +1,4 @@
 import React from "react";
-
-
 import "./weatherCodeStyles.css";
 
 function WeatherCode({
@@ -20,12 +18,8 @@ function WeatherCode({
         <div className="weather-code-temp">    
           <p>{temp}°C</p>
         </div>
-      }
-    
+      }    
     </div>
-   
-    
-
   );
 }
 
