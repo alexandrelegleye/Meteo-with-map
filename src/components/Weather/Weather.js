@@ -4,7 +4,6 @@ import HourlyWeather from "../HourlyWeather/HourlyWeather";
 import DailyWeatherCard from "../DailyWeather/DailyWeatherCard";
 import { Button} from "semantic-ui-react";
 import sunLoader from "./sunLoader.png"
-//import axios from "axios";
 
 // Recoil
 import { useRecoilValue, useRecoilState } from "recoil";

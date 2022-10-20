@@ -8,9 +8,8 @@ function MainNavBar(){
     <Segment>
       <Menu>
         <Menu.Item
-          as={NavLink} // on demande au Menu.Item d'utiliser NavLink pour faire son render
-          // comme ca on utilise le fonction de react-router-dom pour changer de page
-          to="/" // ici la props to, est passé à NavLink
+          as={NavLink}
+          to="/" 
           end
           name="map"
         >
