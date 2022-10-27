@@ -1,5 +1,6 @@
 import { selector} from "recoil";
 import { apiKeyState, formattedAdressState, latState, lngState, mapStyleState, zoomState } from "./adressFoundedAtoms";
+//import {weatherState} from "./weatherAtoms";
 
 
 export const mapDataNeeded = selector ({
@@ -12,6 +13,7 @@ export const mapDataNeeded = selector ({
       apiKey: get(apiKeyState),
       style: get(mapStyleState),
       formattedAdress: get(formattedAdressState),
+      // Weather: get(weatherState),
     }
 
     return dataNeeded

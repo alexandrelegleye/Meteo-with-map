@@ -1,37 +1,51 @@
-import React, { useRef, useEffect} from "react";
-import maplibregl from "maplibre-gl";
+import React from "react"
+import { GiWindsock } from "react-icons/gi";
+import { MapContainer, TileLayer, Marker, Popup  } from "react-leaflet";
+import WeatherCode from "../WeatherCode.js/WeatherCode";
+import  "./MapViewStyle.scss";
 
-// import maplibre from 'maplibre-gl';
-import "./MapViewStyle.scss";
 
 export default function MapView(
   {lng,
     lat,
     zoom,
-    apiKey,
-    style,
+    currentWeather,
+    // apiKey,
+    //style,
   }){
-  const mapContainer = useRef(null);
-  const map = useRef(null);
-  //console.log("stateMapView" ,state);
- 
-  useEffect(() => {
-    if (map.current) return; //stops map from intializing more than once
-    map.current = new maplibregl.Map({
-      container: mapContainer.current,
-      style: `https://maps.geoapify.com/v1/styles/${style}/style.json?apiKey=${apiKey}`,
-      center: [lng, lat],
-      zoom: zoom
-    })
-  },[lng,
-    lat,
-    zoom,
-    apiKey,
-    style,]);
+
+  console.log(currentWeather);
+
+  if(!currentWeather){
+    return (
+      <div>Loading</div>
+  
+    )
+  }
 
   return (
-    <div className="map-wrap">
-      <div ref={mapContainer} className="map" />
+    <div className="test">
+      <MapContainer center={[lat, lng]} zoom={zoom} >  
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={[lat, lng]}>
+          <Popup>
+            <WeatherCode              
+              weatherCode={currentWeather.weather[0].icon}
+              temp={Math.round(currentWeather.temp)}
+            />
+            {currentWeather.weather[0].description}
+            <div className="weather-map-wind">
+              <GiWindsock />
+              {currentWeather.wind_speed} m/s
+            </div>
+        
+          </Popup>
+        </Marker>
+      </MapContainer>
     </div>
-  );
+
+  )
 }

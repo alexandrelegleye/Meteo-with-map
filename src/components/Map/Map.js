@@ -3,10 +3,12 @@ import { Segment } from "semantic-ui-react";
 
 //Components
 import MapNavbar from "../MapNavbar/MapNavbar";
-import MapView from "../MapView/MapView";
+// import MapView from "../MapView/MapView";
 import { useSetRecoilState, useRecoilValue, } from "recoil";
 import { mapDataNeeded } from "../../atomes/adressFoundedSelector";
 import { firstInputState, mapStyleState } from "../../atomes/adressFoundedAtoms";
+import MapView from "../MapView/MapView";
+import { weatherState } from "../../atomes/weatherAtoms";
 
 
 //Style
@@ -14,6 +16,7 @@ import { firstInputState, mapStyleState } from "../../atomes/adressFoundedAtoms"
 function Map() {
 
   const {lng, lat, zoom, apiKey, style, formattedAdress} = useRecoilValue(mapDataNeeded);
+  const Weather = useRecoilValue(weatherState)
   const setMapStyle = useSetRecoilState(mapStyleState);
   const firstInput = useRecoilValue(firstInputState)
 
@@ -36,6 +39,7 @@ function Map() {
             zoom={zoom}
             apiKey={apiKey}
             style={style}
+            currentWeather={Weather.current}
           />
         </>
       )}

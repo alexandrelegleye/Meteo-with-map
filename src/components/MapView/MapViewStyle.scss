@@ -1,15 +1,17 @@
-.map {
-  
-  position: relative;
-  width: 100%;
-  height: 400px;
- overflow: hidden;
- border-radius: 4em;
+@import "https://unpkg.com/leaflet@1.9.2/dist/leaflet.css";
 
-    &-wrap {
-      position: relative;
-      margin: 1em;
-    
-    }
+.leaflet-container {
+    width: 100%;
+    height: 500px;
+  }
 
-}
+  .test{
+    width: auto;
+    height: auto;
+  }
+
+  .weather-map-wind {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }

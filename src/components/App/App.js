@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import MainNavBar from "../MainNavBar/MainNavBar";
 
@@ -15,17 +15,35 @@ import Weather from "../Weather/Weather";
 //Style
 import "./App.scss";
 import { Header } from "semantic-ui-react";
+import FetchDataRequest from "../../requests/weatherRequest";
+import { weatherState } from "../../atomes/weatherAtoms";
 //import Auth from "./Login/Auth";
 
 
 function App() {
 
 
+
+  // eslint-disable-next-line no-unused-vars
+  const [isLoading, setIsLoading] = useState (false)
   const ApiKey = useRecoilValue(apiKeyState);
   const setLatState = useSetRecoilState(latState);
   const setLonState = useSetRecoilState(lngState);
   const setFirstInput= useSetRecoilState(firstInputState)
   const setFormattedAdressState = useSetRecoilState(formattedAdressState);
+  const setWeatherDataRecoil = useSetRecoilState(weatherState);
+
+
+  const FetchData = async (lat, lng) => {
+    setIsLoading(true)
+    try{      
+      setWeatherDataRecoil(await FetchDataRequest(lat,lng))
+    } 
+    catch (error) {
+      console.log(error);
+    }
+    setIsLoading(false)
+  };
 
   const handleAdress = (AdressChoosed) => {
     console.log("handleadress");
@@ -35,6 +53,8 @@ function App() {
     setLonState(lon);
     setFirstInput(true);
     setFormattedAdressState(formatted);    
+    FetchData(lat, lon)
+
   }
 
 
